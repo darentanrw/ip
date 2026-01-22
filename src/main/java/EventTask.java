@@ -9,6 +9,6 @@ public class EventTask extends Task {
   }
 
   public String toString() {
-    return "[E]" + super.toString() + " (from: " + eventStart + " to: " + eventEnd + ")";
+    return super.toString() + " (from: " + eventStart + " to: " + eventEnd + ")";
   }
 }
