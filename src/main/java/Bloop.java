@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 public class Bloop {
     public static void printLine() {
         System.out.println("\t--------------------------------");
@@ -8,7 +9,8 @@ public class Bloop {
     public static void main(String[] args) {
         ArrayList<Task> taskList = new ArrayList<>();
         System.out.println("\t--------------------------------\n\tHello I'm Bloop!\n\tWhat can I do for you?\n\t--------------------------------");
-        String userInput = System.console().readLine();
+        Scanner sc = new Scanner(System.in);
+        String userInput = sc.nextLine();
 
         while (!userInput.equals("bye")) {
             printLine();
@@ -28,7 +30,7 @@ public class Bloop {
                 if (userInputArray.length < 2 || !List.of(validCommands).contains(userInputArray[0])) {
                     System.out.println("\tBloop bloop.... Seems like you have entered an invalid command!");
                     printLine();
-                    userInput = System.console().readLine();
+                    userInput = sc.nextLine();
                     continue;
                 } 
                 String command = userInputArray[0];
@@ -39,8 +41,8 @@ public class Bloop {
                     if (taskIndex < 0 || taskIndex >= taskList.size()) {
                         System.out.println("\tInvalid task index.");
                     } else {
-                        taskList.get(taskIndex).setStatus(command == "mark" ? true : false);
-                        System.out.println("\tNice! I have marked this task as " + (command == "mark" ? "done" : "not done") + ":");
+                        taskList.get(taskIndex).setStatus(command.equals("mark") ? true : false);
+                        System.out.println("\tNice! I have marked this task as " + (command.equals("mark") ? "done" : "not done") + ":");
                         System.out.println("\t" + taskList.get(taskIndex).toString());
                     }
                 }
@@ -61,12 +63,12 @@ public class Bloop {
                 }
             }
             printLine();
-            userInput = System.console().readLine();
+            userInput = sc.nextLine();
         }
 
         printLine();
         System.out.println("\tBye. Hope to see you again soon!");
         printLine();
-        
+        sc.close();
     }
 }
