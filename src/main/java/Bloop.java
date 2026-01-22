@@ -2,7 +2,7 @@ import java.util.ArrayList;
 public class Bloop {
     public static void main(String[] args) {
 
-        ArrayList<Pair> taskList = new ArrayList<>();
+        ArrayList<Task> taskList = new ArrayList<>();
 
         System.out.println("\t--------------------------------");
         System.out.println("\tHello I'm Bloop!");
@@ -12,7 +12,6 @@ public class Bloop {
         String userInput = System.console().readLine();
 
         while (!userInput.equals("bye")) {
-
             if (userInput.equals("list")) {
                 System.out.println("\t--------------------------------");
                 if (taskList.size() == 0) {
@@ -52,7 +51,7 @@ public class Bloop {
                 }
             } else {
                 System.out.println("\t--------------------------------");
-                taskList.add(new Pair(userInput));
+                taskList.add(new Task(userInput));
                 System.out.println("\t added: " + userInput);
                 System.out.println("\t--------------------------------");
             }
