@@ -27,12 +27,17 @@ public class Bloop {
                 String[] userInputArray = userInput.split(" ", 2);
                 String[] validCommands = {"mark", "unmark", "deadline", "event", "todo"};
 
-                if (userInputArray.length < 2 || !List.of(validCommands).contains(userInputArray[0])) {
+                if (!List.of(validCommands).contains(userInputArray[0])) {
                     System.out.println("\tBloop bloop.... Seems like you have entered an invalid command!");
                     printLine();
                     userInput = sc.nextLine();
                     continue;
-                } 
+                } else if (userInputArray.length < 2){
+                    System.out.println("\t The description of a " + userInputArray[0] + " cannot be empty!");
+                    printLine();
+                    userInput = sc.nextLine();
+                    continue;
+                }
                 String command = userInputArray[0];
                 String userQuery = userInputArray[1];
 
