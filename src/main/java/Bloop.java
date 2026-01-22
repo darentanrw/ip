@@ -37,6 +37,19 @@ public class Bloop {
                     System.out.println("\t" + taskList.get(taskIndex).toString());
                     System.out.println("\t--------------------------------");
                 }
+            } else if (userInput.startsWith("unmark")) {
+                int taskIndex = Integer.parseInt(userInput.split(" ")[1]); 
+                taskIndex-=1; // since user input starts from 1
+                
+                if (taskIndex < 0 || taskIndex >= taskList.size()) {
+                    System.out.println("\tInvalid task index");
+                } else {
+                    taskList.get(taskIndex).setStatus(false);
+                    System.out.println("\t--------------------------------");
+                    System.out.println("\tOK, I have marked this task as not done yet:");
+                    System.out.println("\t" + taskList.get(taskIndex).toString());
+                    System.out.println("\t--------------------------------");
+                }
             } else {
                 System.out.println("\t--------------------------------");
                 taskList.add(new Pair(userInput));
