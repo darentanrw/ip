@@ -14,8 +14,12 @@ public class Bloop {
 
             if (userInput.equals("list")) {
                 System.out.println("\t--------------------------------");
-                for (int i = 0; i < taskList.size(); i++) {
-                    System.out.println("\t" + (i+1) + ". " + taskList.get(i));
+                if (taskList.size() == 0) {
+                    System.out.println("\tNo tasks added yet");
+                } else {
+                    for (int i = 0; i < taskList.size(); i++) {
+                        System.out.println("\t" + (i+1) + ". " + taskList.get(i));
+                    }
                 }
                 System.out.println("\t--------------------------------");
             } else {
