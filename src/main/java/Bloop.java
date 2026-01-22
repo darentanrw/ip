@@ -25,7 +25,7 @@ public class Bloop {
                 }
             } else {
                 String[] userInputArray = userInput.split(" ", 2);
-                String[] validCommands = {"mark", "unmark", "deadline", "event", "todo"};
+                String[] validCommands = {"mark", "unmark", "deadline", "event", "todo", "delete"};
 
                 if (!List.of(validCommands).contains(userInputArray[0])) {
                     System.out.println("\tBloop bloop.... Seems like you have entered an invalid command!");
@@ -40,12 +40,20 @@ public class Bloop {
                 }
                 String command = userInputArray[0];
                 String userQuery = userInputArray[1];
+                String[] commandsWithIndex = {"mark", "unmark", "delete"};
 
-                if (command.equals("mark") || command.equals("unmark")) {
+                if (List.of(commandsWithIndex).contains(command)) {
                     int taskIndex = Integer.parseInt(userQuery) -1;
                     if (taskIndex < 0 || taskIndex >= taskList.size()) {
                         System.out.println("\tInvalid task index.");
-                    } else {
+
+                    } else if (command.equals("delete")) {
+                        System.out.println("\tNoted. I've removed this task: ");
+                        System.out.println("\t" + taskList.get(taskIndex).toString());
+                        taskList.remove(taskIndex);
+                        System.out.println("\tYou now have " + taskList.size() + " tasks in the list.");
+                        
+                    } else if (command.equals("mark") || command.equals("unmark")) {
                         taskList.get(taskIndex).setStatus(command.equals("mark") ? true : false);
                         System.out.println("\tNice! I have marked this task as " + (command.equals("mark") ? "done" : "not done") + ":");
                         System.out.println("\t" + taskList.get(taskIndex).toString());
