@@ -13,8 +13,6 @@ public class Task {
     this.taskName = taskName;
     this.isDone = false;
     this.type = type;
-
-    System.out.println("\tGot it. I've added this task: ");
 }
 
   public void setStatus(boolean isDone) {
