@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Task {
     private String taskName;
     private boolean isDone;
@@ -24,5 +26,13 @@ public class Task {
             return "[" + type + "] " + "[" + (isDone ? "X" : " ") + "] " + taskName;
         }
         return "[" + (isDone ? "X" : " ") + "] " + taskName;
+    }
+
+    public ArrayList<String> toStorage() {
+        ArrayList<String> storageList = new ArrayList<String>();
+        storageList.add(type);
+        storageList.add(isDone ? "X" : "");
+        storageList.add(taskName);
+        return storageList;
     }
 }

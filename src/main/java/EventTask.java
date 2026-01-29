@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 public class EventTask extends Task {
     private String eventStart;
     private String eventEnd;
@@ -10,5 +11,13 @@ public class EventTask extends Task {
 
     public String toString() {
         return super.toString() + " (from: " + eventStart + " to: " + eventEnd + ")";
+    }
+
+    @Override
+    public ArrayList<String> toStorage() {
+        ArrayList<String> storageList = super.toStorage();
+        storageList.add(eventStart);
+        storageList.add(eventEnd);
+        return storageList;
     }
 }
