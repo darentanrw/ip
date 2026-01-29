@@ -9,8 +9,7 @@ public class Bloop {
 
     public static void main(String[] args) {
         Storage storage = new Storage();
-        // ArrayList<Task> taskList = storage.load();
-        ArrayList<Task> taskList = new ArrayList<Task>();
+        ArrayList<Task> taskList = storage.load();
         System.out.println("\t--------------------------------\n\tHello I'm Bloop!\n\tWhat can I do for you?\n\t--------------------------------");
         Scanner sc = new Scanner(System.in);
         String userInput = sc.nextLine();
