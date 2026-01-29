@@ -26,7 +26,8 @@ public class Storage {
         try {
             FileWriter fileWriter = new FileWriter("data/tasks.txt");
             for (Task task : taskList) {
-                fileWriter.write(task.toString() + "\n");
+                ArrayList<String> storageList = task.toStorage();
+                fileWriter.write(String.join(" | ", storageList) + "\n");
             }
             fileWriter.close();
         } catch (IOException e) {
