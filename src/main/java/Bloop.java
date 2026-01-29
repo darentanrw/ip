@@ -1,13 +1,15 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 public class Bloop {
     public static void printLine() {
         System.out.println("\t--------------------------------");
     }
 
     public static void main(String[] args) {
-        ArrayList<Task> taskList = new ArrayList<>();
+        Storage storage = new Storage();
+        ArrayList<Task> taskList = storage.load();
         System.out.println("\t--------------------------------\n\tHello I'm Bloop!\n\tWhat can I do for you?\n\t--------------------------------");
         Scanner sc = new Scanner(System.in);
         String userInput = sc.nextLine();
@@ -70,10 +72,14 @@ public class Bloop {
                     } else if (command.equals("todo")) {
                         taskList.add(new ToDoTask(userQuery));
                     }
+
                     System.out.println("\tGot it. I've added this task: ");
                     System.out.println("\t\t" + taskList.get(taskList.size() - 1).toString());
                     System.out.println("\tYou now have " + taskList.size() + " tasks in the list.");
                 }
+
+                storage.save(taskList);
+
             }
             printLine();
             userInput = sc.nextLine();
