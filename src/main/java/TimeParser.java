@@ -23,7 +23,7 @@ public class TimeParser {
      * @return the LocalDateTime object
      */
     public static LocalDateTime parseDateTime(String timeString) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy HHmm");
         return LocalDateTime.parse(timeString, formatter);
     }
 
@@ -40,10 +40,20 @@ public class TimeParser {
     /**
      * Formats a LocalDateTime object into a string.
      * @param dateTime the LocalDateTime object to format
-     * @return the formatted string
+     * @return the formatted string in MMM dd yyyy hh:mm a format
      */
     public static String toString(LocalDateTime dateTime) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy hh:mm a");
+        return dateTime.format(formatter);
+    }
+
+    /**
+     * Formats a LocalDateTime object into a string.
+     * @param dateTime the LocalDateTime object to format
+     * @return the formatted string in d/MM/YYYY HHmm format
+     */
+    public static String toStorage(LocalDateTime dateTime) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy HHmm");
         return dateTime.format(formatter);
     }
 }

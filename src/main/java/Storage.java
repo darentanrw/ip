@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.File;
 import java.util.Scanner;
-import java.util.Arrays;
 
 /**
  * Storage class for saving and loading tasks to a file.

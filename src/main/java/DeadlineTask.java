@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.time.LocalDateTime;
 
 /**
  * DeadlineTask class for creating a Deadline task.
 */
 public class DeadlineTask extends Task {
-    private String deadline;
+    private LocalDateTime deadline;
 
     /**
      * Constructor for DeadlineTask.
@@ -13,7 +14,7 @@ public class DeadlineTask extends Task {
      */
     public DeadlineTask(String taskName, String deadline) {
         super(taskName, "D");
-        this.deadline = deadline;
+        this.deadline = TimeParser.parseDateTime(deadline);
     }
 
     /**
@@ -23,11 +24,11 @@ public class DeadlineTask extends Task {
     @Override
     public ArrayList<String> toStorage() {
         ArrayList<String> storageList = super.toStorage();
-        storageList.add(deadline);
+        storageList.add(TimeParser.toStorage(deadline));
         return storageList;
     }
 
     public String toString() {
-        return super.toString() + " (by: " + deadline + ")";
+        return super.toString() + " (by: " + TimeParser.toString(deadline) + ")";
     } 
 }

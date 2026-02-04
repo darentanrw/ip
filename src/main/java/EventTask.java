@@ -1,11 +1,12 @@
 import java.util.ArrayList;
+import java.time.LocalDateTime;
 
 /**
  * EventTask class for creating an Event task.
 */
 public class EventTask extends Task {
-    private String eventStart;
-    private String eventEnd;
+    private LocalDateTime eventStart;
+    private LocalDateTime eventEnd;
 
     /**
      * Constructor for EventTask.
@@ -15,8 +16,8 @@ public class EventTask extends Task {
      */
     public EventTask(String taskName, String eventStart, String eventEnd) {
         super(taskName, "E");
-        this.eventStart = eventStart;
-        this.eventEnd = eventEnd;
+        this.eventStart = TimeParser.parseDateTime(eventStart);
+        this.eventEnd = TimeParser.parseDateTime(eventEnd);
     }
 
     /**
@@ -26,12 +27,12 @@ public class EventTask extends Task {
     @Override
     public ArrayList<String> toStorage() {
         ArrayList<String> storageList = super.toStorage();
-        storageList.add(eventStart);
-        storageList.add(eventEnd);
+        storageList.add(TimeParser.toStorage(eventStart));
+        storageList.add(TimeParser.toStorage(eventEnd));
         return storageList;
     }
 
     public String toString() {
-        return super.toString() + " (from: " + eventStart + " to: " + eventEnd + ")";
+        return super.toString() + " (from: " + TimeParser.toString(eventStart) + " to: " + TimeParser.toString(eventEnd) + ")";
     }
 }
