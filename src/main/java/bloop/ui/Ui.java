@@ -1,3 +1,8 @@
+package bloop.ui;
+
+import bloop.task.Task;
+import bloop.task.TaskList;
+
 /**
  * Handles all interactions with the user (reading input, printing output).
  */

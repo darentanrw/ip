@@ -1,3 +1,5 @@
+package bloop.storage;
+
 import java.util.ArrayList;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -5,6 +7,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.File;
 import java.util.Scanner;
+
+import bloop.task.Task;
+import bloop.task.TaskList;
+import bloop.task.ToDoTask;
+import bloop.task.DeadlineTask;
+import bloop.task.EventTask;
 
 /**
  * Handles loading tasks from a file and saving tasks to a file.

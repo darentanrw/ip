@@ -1,4 +1,14 @@
+package bloop.parser;
+
 import java.util.List;
+
+import bloop.task.Task;
+import bloop.task.TaskList;
+import bloop.task.ToDoTask;
+import bloop.task.DeadlineTask;
+import bloop.task.EventTask;
+import bloop.ui.Ui;
+import bloop.storage.Storage;
 
 /**
  * Handles parsing and execution of user commands.
