@@ -1,5 +1,9 @@
+package bloop.task;
+
 import java.util.ArrayList;
 import java.time.LocalDateTime;
+
+import bloop.parser.TimeParser;
 
 /**
  * DeadlineTask class for creating a Deadline task.

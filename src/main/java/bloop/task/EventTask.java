@@ -1,5 +1,9 @@
+package bloop.task;
+
 import java.util.ArrayList;
 import java.time.LocalDateTime;
+
+import bloop.parser.TimeParser;
 
 /**
  * EventTask class for creating an Event task.

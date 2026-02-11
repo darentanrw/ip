@@ -1,4 +1,11 @@
+package bloop;
+
 import java.util.Scanner;
+
+import bloop.parser.Parser;
+import bloop.storage.Storage;
+import bloop.task.TaskList;
+import bloop.ui.Ui;
 
 public class Bloop {
     private Storage storage;
