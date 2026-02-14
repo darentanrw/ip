@@ -40,4 +40,20 @@ public class TaskList {
     public boolean isValidIndex(int index) {
         return index >= 0 && index < tasks.size();
     }
+
+    /**
+     * Finds all tasks whose name contains the given keyword.
+     *
+     * @param keyword the keyword to search for in task names
+     * @return a list of tasks that match the keyword
+     */
+    public ArrayList<Task> findTasks(String keyword) {
+        ArrayList<Task> matchingTasks = new ArrayList<>();
+        for (Task task : tasks) {
+            if (task.getTaskName().contains(keyword)) {
+                matchingTasks.add(task);
+            }
+        }
+        return matchingTasks;
+    }
 }

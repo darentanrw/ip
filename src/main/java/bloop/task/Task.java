@@ -40,6 +40,15 @@ public class Task {
     }
 
     /**
+     * Returns the name of the task.
+     *
+     * @return the task name
+     */
+    public String getTaskName() {
+        return this.taskName;
+    }
+
+    /**
      * Returns the storage representation of the Task.
      * @return the ArrayList of strings representing the Task
      */

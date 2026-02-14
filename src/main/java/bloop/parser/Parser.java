@@ -14,7 +14,7 @@ import bloop.storage.Storage;
  * Handles parsing and execution of user commands.
  */
 public class Parser {
-    private static final String[] VALID_COMMANDS = {"mark", "unmark", "deadline", "event", "todo", "delete"};
+    private static final String[] VALID_COMMANDS = {"mark", "unmark", "deadline", "event", "todo", "delete", "find"};
     private static final String[] INDEX_COMMANDS = {"mark", "unmark", "delete"};
 
     /**
@@ -55,6 +55,12 @@ public class Parser {
         }
 
         String userQuery = userInputArray[1];
+
+        if (command.equals("find")) {
+            ui.printMatchingTasks(tasks.findTasks(userQuery));
+            ui.printLine();
+            return true;
+        }
 
         if (List.of(INDEX_COMMANDS).contains(command)) {
             handleIndexCommand(command, userQuery, tasks, ui);
