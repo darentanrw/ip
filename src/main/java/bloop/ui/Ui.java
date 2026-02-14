@@ -1,5 +1,7 @@
 package bloop.ui;
 
+import java.util.ArrayList;
+
 import bloop.task.Task;
 import bloop.task.TaskList;
 
@@ -94,6 +96,22 @@ public class Ui {
      */
     public void printCustomErrorMessage(String errorMessage) {
         System.out.println("\t" + errorMessage);
+    }
+
+    /**
+     * Prints the list of tasks that match a search keyword.
+     *
+     * @param matchingTasks the list of matching tasks to display
+     */
+    public void printMatchingTasks(ArrayList<Task> matchingTasks) {
+        if (matchingTasks.isEmpty()) {
+            System.out.println("\tNo matching tasks found.");
+        } else {
+            System.out.println("\tHere are the matching tasks in your list:");
+            for (int i = 0; i < matchingTasks.size(); i++) {
+                System.out.println("\t" + (i + 1) + "." + matchingTasks.get(i).toString());
+            }
+        }
     }
 
     /**
