@@ -11,7 +11,8 @@ public class Ui {
      * Prints the welcome message when the application starts.
      */
     public void printWelcomeMessage() {
-        System.out.println("\t--------------------------------\n\tHello I'm Bloop!\n\tWhat can I do for you?\n\t--------------------------------");
+        System.out.println(
+                "\t--------------------------------\n\tHello I'm Bloop!\n\tWhat can I do for you?\n\t--------------------------------");
     }
 
     /**

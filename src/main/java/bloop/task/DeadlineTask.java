@@ -7,12 +7,13 @@ import bloop.parser.TimeParser;
 
 /**
  * DeadlineTask class for creating a Deadline task.
-*/
+ */
 public class DeadlineTask extends Task {
     private LocalDateTime deadline;
 
     /**
      * Constructor for DeadlineTask.
+     * 
      * @param taskName the name of the task
      * @param deadline the deadline of the task
      */
@@ -23,6 +24,7 @@ public class DeadlineTask extends Task {
 
     /**
      * Returns the storage representation of the DeadlineTask.
+     * 
      * @return the ArrayList of strings representing the DeadlineTask
      */
     @Override
@@ -34,5 +36,5 @@ public class DeadlineTask extends Task {
 
     public String toString() {
         return super.toString() + " (by: " + TimeParser.toString(deadline) + ")";
-    } 
+    }
 }

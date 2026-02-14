@@ -7,16 +7,17 @@ import bloop.parser.TimeParser;
 
 /**
  * EventTask class for creating an Event task.
-*/
+ */
 public class EventTask extends Task {
     private LocalDateTime eventStart;
     private LocalDateTime eventEnd;
 
     /**
      * Constructor for EventTask.
-     * @param taskName the name of the task
+     * 
+     * @param taskName   the name of the task
      * @param eventStart the start time of the event
-     * @param eventEnd the end time of the event
+     * @param eventEnd   the end time of the event
      */
     public EventTask(String taskName, String eventStart, String eventEnd) {
         super(taskName, "E");
@@ -26,6 +27,7 @@ public class EventTask extends Task {
 
     /**
      * Returns the storage representation of the EventTask.
+     * 
      * @return the ArrayList of strings representing the EventTask
      */
     @Override
@@ -37,6 +39,7 @@ public class EventTask extends Task {
     }
 
     public String toString() {
-        return super.toString() + " (from: " + TimeParser.toString(eventStart) + " to: " + TimeParser.toString(eventEnd) + ")";
+        return super.toString() + " (from: " + TimeParser.toString(eventStart) + " to: " + TimeParser.toString(eventEnd)
+                + ")";
     }
 }

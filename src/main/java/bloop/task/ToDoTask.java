@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 /**
  * ToDoTask class for creating a ToDo task.
-*/
+ */
 public class ToDoTask extends Task {
     /**
      * Constructor for ToDoTask.
+     * 
      * @param taskName the name of the task
      */
     public ToDoTask(String taskName) {
@@ -16,6 +17,7 @@ public class ToDoTask extends Task {
 
     /**
      * Returns the storage representation of the ToDoTask.
+     * 
      * @return the storage representation of the ToDoTask
      */
     @Override
