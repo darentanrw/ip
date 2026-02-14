@@ -8,7 +8,8 @@ import bloop.task.TaskList;
  */
 public class Ui {
     public void printWelcomeMessage() {
-        System.out.println("\t--------------------------------\n\tHello I'm Bloop!\n\tWhat can I do for you?\n\t--------------------------------");
+        System.out.println(
+                "\t--------------------------------\n\tHello I'm Bloop!\n\tWhat can I do for you?\n\t--------------------------------");
     }
 
     public void printGoodbyeMessage() {

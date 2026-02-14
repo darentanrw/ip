@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * General Task class for creating a Task.
-*/
+ */
 public class Task {
     private String taskName;
     private boolean isDone;
@@ -12,6 +12,7 @@ public class Task {
 
     /**
      * Constructor for Task.
+     * 
      * @param taskName the name of the task
      */
     public Task(String taskName) {
@@ -22,8 +23,9 @@ public class Task {
 
     /**
      * Constructor for Task.
+     * 
      * @param taskName the name of the task
-     * @param type the type of the task
+     * @param type     the type of the task
      */
     public Task(String taskName, String type) {
         this.taskName = taskName;
@@ -33,6 +35,7 @@ public class Task {
 
     /**
      * Sets the status of the task.
+     * 
      * @param isDone the status of the task
      */
     public void setStatus(boolean isDone) {
@@ -41,6 +44,7 @@ public class Task {
 
     /**
      * Returns the storage representation of the Task.
+     * 
      * @return the ArrayList of strings representing the Task
      */
     public ArrayList<String> toStorage() {
@@ -50,7 +54,7 @@ public class Task {
         storageList.add(taskName);
         return storageList;
     }
-    
+
     public String toString() {
         if (type != null) {
             return "[" + type + "] " + "[" + (isDone ? "X" : " ") + "] " + taskName;

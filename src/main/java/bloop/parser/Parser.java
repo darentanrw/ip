@@ -14,16 +14,16 @@ import bloop.storage.Storage;
  * Handles parsing and execution of user commands.
  */
 public class Parser {
-    private static final String[] VALID_COMMANDS = {"mark", "unmark", "deadline", "event", "todo", "delete"};
-    private static final String[] INDEX_COMMANDS = {"mark", "unmark", "delete"};
+    private static final String[] VALID_COMMANDS = { "mark", "unmark", "deadline", "event", "todo", "delete" };
+    private static final String[] INDEX_COMMANDS = { "mark", "unmark", "delete" };
 
     /**
      * Parses and executes the user's command.
      *
      * @param userInput the raw user input
-     * @param tasks the task list to operate on
-     * @param ui the UI for displaying messages
-     * @param storage the storage for saving tasks
+     * @param tasks     the task list to operate on
+     * @param ui        the UI for displaying messages
+     * @param storage   the storage for saving tasks
      * @return true if the program should continue, false if user wants to exit
      */
     public static boolean handleCommand(String userInput, TaskList tasks, Ui ui, Storage storage) {
