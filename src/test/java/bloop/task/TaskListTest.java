@@ -192,4 +192,37 @@ public class TaskListTest {
         ArrayList<String> storage = taskList.getTask(0).toStorage();
         assertEquals("", storage.get(1));
     }
+
+    @Test
+    void findTasks_matchingKeyword_returnsMatchingTasks() {
+        taskList.addTask(new ToDoTask("read book"));
+        taskList.addTask(new ToDoTask("return book"));
+        taskList.addTask(new ToDoTask("buy groceries"));
+        ArrayList<Task> results = taskList.findTasks("book");
+        assertEquals(2, results.size());
+        assertEquals("read book", results.get(0).getTaskName());
+        assertEquals("return book", results.get(1).getTaskName());
+    }
+
+    @Test
+    void findTasks_noMatch_returnsEmptyList() {
+        taskList.addTask(new ToDoTask("read book"));
+        ArrayList<Task> results = taskList.findTasks("homework");
+        assertTrue(results.isEmpty());
+    }
+
+    @Test
+    void findTasks_singleMatch_returnsOneTask() {
+        taskList.addTask(new ToDoTask("read book"));
+        taskList.addTask(new ToDoTask("buy groceries"));
+        ArrayList<Task> results = taskList.findTasks("groceries");
+        assertEquals(1, results.size());
+        assertEquals("buy groceries", results.get(0).getTaskName());
+    }
+
+    @Test
+    void findTasks_emptyTaskList_returnsEmptyList() {
+        ArrayList<Task> results = taskList.findTasks("book");
+        assertTrue(results.isEmpty());
+    }
 }
