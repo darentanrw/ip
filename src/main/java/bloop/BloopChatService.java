@@ -1,0 +1,55 @@
+package bloop;
+
+import bloop.parser.Parser;
+import bloop.storage.Storage;
+import bloop.task.TaskList;
+import bloop.ui.GuiUi;
+
+/**
+ * Chat-oriented service that reuses existing parser/storage logic.
+ */
+public class BloopChatService {
+    private final Storage storage;
+    private final TaskList tasks;
+    private final GuiUi ui;
+
+    public BloopChatService(String filePath) {
+        this.storage = new Storage(filePath);
+        this.tasks = new TaskList(storage.load());
+        this.ui = new GuiUi();
+    }
+
+    /**
+     * Returns the initial greeting shown in the GUI.
+     */
+    public String getWelcomeMessage() {
+        ui.resetBuffer();
+        ui.printWelcomeMessage();
+        return ui.consumeOutput();
+    }
+
+    /**
+     * Returns Bloop's response for a user command.
+     */
+    public String getResponse(String userInput) {
+        ui.resetBuffer();
+        try {
+            boolean shouldContinue = Parser.handleCommand(userInput, tasks, ui, storage);
+            if (!shouldContinue) {
+                ui.printGoodbyeMessage();
+            }
+        } catch (RuntimeException e) {
+            ui.printCustomErrorMessage("Something went wrong while processing your command.");
+            ui.printCustomErrorMessage("Please check your command format and try again.");
+            ui.printLine();
+        }
+        return ui.consumeOutput();
+    }
+
+    /**
+     * Indicates whether the app should exit based on user input.
+     */
+    public boolean shouldExit(String userInput) {
+        return "bye".equals(userInput.strip());
+    }
+}
