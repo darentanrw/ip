@@ -62,7 +62,13 @@ public class Storage {
             Scanner sc = new Scanner(existingTasks);
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
-                String[] parts = line.split(" \\| ");
+                if (line.strip().isEmpty()) {
+                    continue;
+                }
+                String[] parts = line.split("\\s*\\|\\s*", -1);
+                if (parts.length < 3) {
+                    continue;
+                }
 
                 String taskType = parts[0].strip();
                 String taskStatus = parts[1].strip();
@@ -70,8 +76,14 @@ public class Storage {
 
                 Task newTask;
                 if (taskType.equals("D")) {
+                    if (parts.length < 4) {
+                        continue;
+                    }
                     newTask = new DeadlineTask(taskName, parts[3].strip());
                 } else if (taskType.equals("E")) {
+                    if (parts.length < 5) {
+                        continue;
+                    }
                     newTask = new EventTask(taskName, parts[3].strip(), parts[4].strip());
                 } else if (taskType.equals("T")) {
                     newTask = new ToDoTask(taskName);
