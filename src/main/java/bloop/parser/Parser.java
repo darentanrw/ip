@@ -16,6 +16,7 @@ import bloop.storage.Storage;
 public class Parser {
     private static final String[] VALID_COMMANDS = {"mark", "unmark", "deadline", "event", "todo", "delete", "find"};
     private static final String[] INDEX_COMMANDS = {"mark", "unmark", "delete"};
+    private static final int USER_TO_ARRAY_INDEX_OFFSET = 1;
 
     /**
      * Parses and executes the user's command.
@@ -74,7 +75,7 @@ public class Parser {
     }
 
     private static void handleIndexCommand(String command, String userQuery, TaskList tasks, Ui ui) {
-        int taskIndex = Integer.parseInt(userQuery) - 1;
+        int taskIndex = Integer.parseInt(userQuery) - USER_TO_ARRAY_INDEX_OFFSET;
 
         if (!tasks.isValidIndex(taskIndex)) {
             ui.printCustomErrorMessage("Invalid task index.");
