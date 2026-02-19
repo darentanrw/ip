@@ -27,6 +27,11 @@ public class Parser {
      * @return true if the program should continue, false if user wants to exit
      */
     public static boolean handleCommand(String userInput, TaskList tasks, Ui ui, Storage storage) {
+        assert userInput != null : "Parser expects non-null user input.";
+        assert tasks != null : "Parser expects a non-null task list.";
+        assert ui != null : "Parser expects a non-null UI instance.";
+        assert storage != null : "Parser expects a non-null storage instance.";
+
         if (userInput.equals("bye")) {
             return false;
         }
@@ -74,6 +79,11 @@ public class Parser {
     }
 
     private static void handleIndexCommand(String command, String userQuery, TaskList tasks, Ui ui) {
+        assert List.of(INDEX_COMMANDS).contains(command) : "Index handler expects mark/unmark/delete commands only.";
+        assert userQuery != null : "Index handler expects a non-null query.";
+        assert tasks != null : "Index handler expects a non-null task list.";
+        assert ui != null : "Index handler expects a non-null UI instance.";
+
         int taskIndex = Integer.parseInt(userQuery) - 1;
 
         if (!tasks.isValidIndex(taskIndex)) {
@@ -91,13 +101,21 @@ public class Parser {
     }
 
     private static void handleTaskCreation(String command, String userQuery, TaskList tasks, Ui ui) {
+        assert command.equals("deadline") || command.equals("event") || command.equals("todo")
+                : "Task creation expects deadline/event/todo commands only.";
+        assert userQuery != null : "Task creation expects a non-null query.";
+        assert tasks != null : "Task creation expects a non-null task list.";
+        assert ui != null : "Task creation expects a non-null UI instance.";
+
         Task newTask;
 
         if (command.equals("deadline")) {
             String[] parts = userQuery.split(" /by ");
+            assert parts.length == 2 : "Deadline input must contain description and /by date.";
             newTask = new DeadlineTask(parts[0], parts[1]);
         } else if (command.equals("event")) {
             String[] parts = userQuery.split("\\s+/from\\s+|\\s+/to\\s+");
+            assert parts.length == 3 : "Event input must contain description, /from, and /to segments.";
             newTask = new EventTask(parts[0], parts[1], parts[2]);
         } else {
             newTask = new ToDoTask(userQuery);
