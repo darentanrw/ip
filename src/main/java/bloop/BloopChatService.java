@@ -42,6 +42,7 @@ public class BloopChatService {
         } catch (RuntimeException e) {
             ui.printCustomErrorMessage("Something went wrong while processing your command.");
             ui.printCustomErrorMessage("Please check your command format and try again.");
+            ui.printHelpHint();
             ui.printLine();
         }
         String response = ui.consumeOutput();

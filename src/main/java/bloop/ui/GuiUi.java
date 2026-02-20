@@ -38,6 +38,7 @@ public class GuiUi extends Ui {
         appendLine("--------------------------------");
         appendLine("Hello! I'm Bloop!");
         appendLine("What can I do for you?");
+        appendLine("Type \"help\" to see a list of available commands.");
         appendLine("--------------------------------");
     }
 
@@ -82,6 +83,26 @@ public class GuiUi extends Ui {
     @Override
     public void printInvalidCommandMessage() {
         appendLine("Bloop bloop.... Seems like you have entered an invalid command!");
+    }
+
+    @Override
+    public void printHelpHint() {
+        appendLine("Type \"help\" to see a list of available commands.");
+    }
+
+    @Override
+    public void printHelpMessage() {
+        appendLine("Here are the commands you can use:");
+        appendLine("  help - show this help message");
+        appendLine("  list - list all tasks");
+        appendLine("  todo <description> - add a todo");
+        appendLine("  deadline <description> /by <d/M/yyyy HHmm> - add a deadline");
+        appendLine("  event <description> /from <d/M/yyyy HHmm> /to <d/M/yyyy HHmm> - add an event");
+        appendLine("  mark <index> - mark a task as done");
+        appendLine("  unmark <index> - mark a task as not done");
+        appendLine("  delete <index> - delete a task");
+        appendLine("  find <keyword> - list tasks containing the keyword");
+        appendLine("  bye - exit");
     }
 
     @Override
