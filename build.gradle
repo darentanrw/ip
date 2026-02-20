@@ -44,6 +44,7 @@ test {
 
 application {
     mainClass.set("bloop.Launcher")
+    applicationDefaultJvmArgs = ['-ea']
 }
 
 shadowJar {
