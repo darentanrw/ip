@@ -32,6 +32,7 @@ public class BloopChatService {
      * Returns Bloop's response for a user command.
      */
     public String getResponse(String userInput) {
+        assert userInput != null : "Chat expects non-null user input.";
         ui.resetBuffer();
         try {
             boolean shouldContinue = Parser.handleCommand(userInput, tasks, ui, storage);
@@ -43,7 +44,9 @@ public class BloopChatService {
             ui.printCustomErrorMessage("Please check your command format and try again.");
             ui.printLine();
         }
-        return ui.consumeOutput();
+        String response = ui.consumeOutput();
+        assert !response.isBlank() : "Command should produce a visible response.";
+        return response;
     }
 
     /**

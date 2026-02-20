@@ -24,6 +24,8 @@ public class DialogBox extends HBox {
     private ImageView displayPicture;
 
     private DialogBox(String text, Image image) {
+        assert text != null : "DialogBox expects non-null text.";
+        assert image != null : "DialogBox expects a non-null avatar image.";
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(MainWindow.class.getResource("/view/DialogBox.fxml"));
             fxmlLoader.setController(this);
@@ -33,11 +35,14 @@ public class DialogBox extends HBox {
             throw new IllegalStateException("Failed to load DialogBox.fxml", e);
         }
 
+        assert dialog != null : "FXML must inject dialog label.";
+        assert displayPicture != null : "FXML must inject display picture.";
         dialog.setText(text);
         displayPicture.setImage(image);
     }
 
     private void flip() {
+        assert getChildren() != null : "DialogBox children should always be available.";
         ObservableList<Node> children = FXCollections.observableArrayList(getChildren());
         Collections.reverse(children);
         getChildren().setAll(children);
