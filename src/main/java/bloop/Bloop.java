@@ -39,8 +39,15 @@ public class Bloop {
 
         while (true) {
             String userInput = sc.nextLine();
-            if (!Parser.handleCommand(userInput, tasks, ui, storage)) {
-                break;
+            try {
+                if (!Parser.handleCommand(userInput, tasks, ui, storage)) {
+                    break;
+                }
+            } catch (RuntimeException e) {
+                ui.printCustomErrorMessage("Something went wrong while processing your command.");
+                ui.printCustomErrorMessage("Please check your command format and try again.");
+                ui.printHelpHint();
+                ui.printLine();
             }
         }
 

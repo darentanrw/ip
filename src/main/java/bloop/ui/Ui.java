@@ -14,7 +14,7 @@ public class Ui {
      */
     public void printWelcomeMessage() {
         System.out.println(
-                "\t--------------------------------\n\tHello I'm Bloop!\n\tWhat can I do for you?\n\t--------------------------------");
+                "\t--------------------------------\n\tHello I'm Bloop!\n\tWhat can I do for you?\n\tType \"help\" to see a list of available commands.\n\t--------------------------------");
     }
 
     /**
@@ -78,6 +78,30 @@ public class Ui {
      */
     public void printInvalidCommandMessage() {
         System.out.println("\tBloop bloop.... Seems like you have entered an invalid command!");
+    }
+
+    /**
+     * Prints a short hint to use the help command.
+     */
+    public void printHelpHint() {
+        System.out.println("\tType \"help\" to see a list of available commands.");
+    }
+
+    /**
+     * Prints a help message describing the available commands and their usage.
+     */
+    public void printHelpMessage() {
+        System.out.println("\tHere are the commands you can use:");
+        System.out.println("\t  help - show this help message");
+        System.out.println("\t  list - list all tasks");
+        System.out.println("\t  todo <description> - add a todo");
+        System.out.println("\t  deadline <description> /by <d/M/yyyy HHmm> - add a deadline");
+        System.out.println("\t  event <description> /from <d/M/yyyy HHmm> /to <d/M/yyyy HHmm> - add an event");
+        System.out.println("\t  mark <index> - mark a task as done");
+        System.out.println("\t  unmark <index> - mark a task as not done");
+        System.out.println("\t  delete <index> - delete a task");
+        System.out.println("\t  find <keyword> - list tasks containing the keyword");
+        System.out.println("\t  bye - exit");
     }
 
     /**
