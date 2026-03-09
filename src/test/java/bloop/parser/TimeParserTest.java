@@ -42,7 +42,8 @@ public class TimeParserTest {
 
     @Test
     void parseDateTime_doubleDigitMonthAndDay_parsesCorrectly() {
-        LocalDateTime result = TimeParser.parseDateTime("12/25/2025 0930");
+        // DD/MM/YYYY format: 25th December 2025
+        LocalDateTime result = TimeParser.parseDateTime("25/12/2025 0930");
         assertEquals(12, result.getMonthValue());
         assertEquals(25, result.getDayOfMonth());
         assertEquals(9, result.getHour());
@@ -50,8 +51,20 @@ public class TimeParserTest {
     }
 
     @Test
+    void parseDateTime_ddMmYyyyFormat_parsesCorrectly() {
+        // 2/12/2019 = 2nd December 2019 (DD/MM)
+        LocalDateTime result = TimeParser.parseDateTime("2/12/2019 1800");
+        assertEquals(2019, result.getYear());
+        assertEquals(12, result.getMonthValue());
+        assertEquals(2, result.getDayOfMonth());
+        assertEquals(18, result.getHour());
+        assertEquals(0, result.getMinute());
+    }
+
+    @Test
     void parseDateTime_midnight_parsesCorrectly() {
-        LocalDateTime result = TimeParser.parseDateTime("6/15/2025 0000");
+        // DD/MM: 15th June 2025
+        LocalDateTime result = TimeParser.parseDateTime("15/6/2025 0000");
         assertEquals(0, result.getHour());
         assertEquals(0, result.getMinute());
     }
@@ -115,8 +128,24 @@ public class TimeParserTest {
 
     @Test
     void toStorage_parseThenStore_producesExpectedFormat() {
-        LocalDateTime parsed = TimeParser.parseDateTime("3/15/2025 1430");
+        // DD/MM: 15th March 2025
+        LocalDateTime parsed = TimeParser.parseDateTime("15/3/2025 1430");
         String stored = TimeParser.toStorage(parsed);
         assertEquals("15/03/2025 1430", stored);
+    }
+
+    @Test
+    void parseDateTime_invalidFeb29NonLeapYear_throwsException() {
+        assertThrows(DateTimeParseException.class, () -> TimeParser.parseDateTime("29/2/2026 1800"));
+    }
+
+    @Test
+    void parseDateTime_invalidFeb30_throwsException() {
+        assertThrows(DateTimeParseException.class, () -> TimeParser.parseDateTime("30/2/2026 1800"));
+    }
+
+    @Test
+    void parseDateTime_invalidFeb31_throwsException() {
+        assertThrows(DateTimeParseException.class, () -> TimeParser.parseDateTime("31/2/2026 1800"));
     }
 }

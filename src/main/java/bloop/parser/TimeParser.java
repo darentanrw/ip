@@ -3,13 +3,16 @@ package bloop.parser;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 
 /**
  * TimeParser class for parsing time strings into LocalDate objects.
  */
 public class TimeParser {
     private static final DateTimeFormatter INPUT_DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private static final DateTimeFormatter INPUT_DATETIME_FORMATTER = DateTimeFormatter.ofPattern("M/d/yyyy HHmm");
+    private static final DateTimeFormatter INPUT_DATETIME_FORMATTER = DateTimeFormatter
+            .ofPattern("d/M/uuuu HHmm")
+            .withResolverStyle(ResolverStyle.STRICT);
     private static final DateTimeFormatter OUTPUT_DATE_FORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy");
     private static final DateTimeFormatter OUTPUT_DATETIME_FORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy hh:mm a");
     private static final DateTimeFormatter STORAGE_DATETIME_FORMATTER = DateTimeFormatter.ofPattern("d/MM/yyyy HHmm");

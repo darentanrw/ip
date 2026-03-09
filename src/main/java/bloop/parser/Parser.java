@@ -15,8 +15,8 @@ import bloop.storage.Storage;
  * Handles parsing and execution of user commands.
  */
 public class Parser {
-    private static final String[] VALID_COMMANDS = {"mark", "unmark", "deadline", "event", "todo", "delete", "find"};
-    private static final String[] INDEX_COMMANDS = {"mark", "unmark", "delete"};
+    private static final String[] VALID_COMMANDS = { "mark", "unmark", "deadline", "event", "todo", "delete", "find" };
+    private static final String[] INDEX_COMMANDS = { "mark", "unmark", "delete" };
     private static final int USER_TO_ARRAY_INDEX_OFFSET = 1;
 
     /**
